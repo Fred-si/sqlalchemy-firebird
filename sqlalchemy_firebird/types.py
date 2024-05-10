@@ -13,7 +13,7 @@ NATIONAL_CHARSET = "ISO8859_1"
 
 
 class _FBString(sqltypes.String):
-    render_bind_cast = True
+    render_bind_cast = False
 
     def __init__(self, length=None, charset=None, collation=None):
         super().__init__(length, collation)
@@ -67,7 +67,7 @@ class FBNVARCHAR(FBVARCHAR):
 
 
 class _FBNumeric(sqltypes.Numeric):
-    render_bind_cast = True
+    render_bind_cast = False
 
     def bind_processor(self, dialect):
         return None  # Dialect supports_native_decimal = True (no processor needed)
@@ -115,19 +115,19 @@ class FBNUMERIC(_FBFixedPoint):
 
 
 class FBDATE(sqltypes.DATE):
-    render_bind_cast = True
+    render_bind_cast = False
 
 
 class FBTIME(sqltypes.TIME):
-    render_bind_cast = True
+    render_bind_cast = False
 
 
 class FBTIMESTAMP(sqltypes.TIMESTAMP):
-    render_bind_cast = True
+    render_bind_cast = False
 
 
 class _FBInteger(sqltypes.Integer):
-    render_bind_cast = True
+    render_bind_cast = False
 
 
 class FBSMALLINT(_FBInteger):
@@ -147,11 +147,11 @@ class FBINT128(_FBInteger):
 
 
 class FBBOOLEAN(sqltypes.BOOLEAN):
-    render_bind_cast = True
+    render_bind_cast = False
 
 
 class _FBLargeBinary(sqltypes.LargeBinary):
-    render_bind_cast = True
+    render_bind_cast = False
 
     def __init__(
         self, subtype=None, segment_size=None, charset=None, collation=None
